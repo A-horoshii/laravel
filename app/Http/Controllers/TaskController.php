@@ -64,6 +64,20 @@ class TaskController extends Controller
         return redirect('/tasks');
     }
 
+    public function edit(Request $request, Task $task){
+
+
+        $this->validate($request, [
+            'name_edit' => 'required|max:255',
+        ]);
+
+        $task->update([
+            'name' => $request->name_edit,
+        ]);
+
+        return redirect('/tasks ');
+    }
+
     /**
      * Destroy the given task.
      *
